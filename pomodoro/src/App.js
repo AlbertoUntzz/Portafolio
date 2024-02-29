@@ -3,26 +3,22 @@ import './App.css';
 import Timer from './Components/Timer';
 import Header from './Components/Header';
 import Settings from './Components/Settings';
-import {useState} from 'react';
-import SettingsContext from './SettingsContext'; // Corregido el nombre de importación
+import {useState} from 'react'
+import SettingsContext from './Components/SettingsContext';
 
 
 function App() {
 
-  const [showSettings, setShowSettings] = useState(false);
+  const [showSettings, setShowSettings] = useState(true);
 
   return(
       <div>
       <Header/>
-    <main>
-      <SettingsContext.Provider value={{
-        workminutes: 45,
-        breakMinutes: 15,
-      }}>
-        {showSettings ? <Settings/> : <timer/>}
+      <main>
+        <SettingsContext.Provider>
+        {showSettings ? <Settings/>: <Timer/>}
         </SettingsContext.Provider>
-      <Timer/>  
-    </main>
+      </main>
     </div>
     
     

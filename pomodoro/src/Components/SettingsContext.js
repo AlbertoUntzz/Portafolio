@@ -1,6 +1,5 @@
-import React from "react";
+import react from 'react';
 
 const SettingsContext = react.createContext({});
 
-
-export default settingsContext
+export default SettingsContext;
