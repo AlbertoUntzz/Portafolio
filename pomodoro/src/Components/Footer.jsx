@@ -47,9 +47,8 @@ function Footer(){
       </svg>
     </div>
 
-    <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt consequuntur amet culpa cum
-      itaque neque.
+    <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-purple-50">
+      This my frist proyect using React, 
     </p>
 
     <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">

@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const response = await fetch('https://api.unsplash.com/photos/cat?client_id=16nDuBPIZgY7w3RMazFjfe1u8eX4rwPjezxL91jtlGw');
+        const response = await fetch('https://api.unsplash.com/photos/random?query=space&client_id=16nDuBPIZgY7w3RMazFjfe1u8eX4rwPjezxL91jtlGw');
         const data = await response.json();
         setImageUrl(data.urls.regular); // Actualiza la variable imageUrl con la URL de la imagen obtenida de la API de Unsplash
       } catch (error) {
@@ -23,7 +23,7 @@ function App() {
   }, []);
     
   return (
-    <div style={{backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+    <div style={{backgroundImage: `url(${imageUrl}&w=1920)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Todo />} />
