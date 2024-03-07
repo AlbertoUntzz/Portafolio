@@ -1,37 +1,41 @@
-
+import React, { useState, useEffect } from 'react'; // Importa useState y useEffect desde React
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Timer from './Components/Timer';
-import Header from './Components/Header';
-import Settings from './Components/Settings';
-import {useState} from 'react'
-import SettingsContext from './Components/SettingsContext';
-
+import Login from './Components/Login';
+import Todo from './Components/Todo';
+import Register from '../src/Components/Register';
 
 function App() {
+  const [imageUrl, setImageUrl] = useState(''); // Define la variable imageUrl y su función setter setImageUrl
 
-  const [showSettings, setShowSettings] = useState(false);
-  const [workMinutes, setWorkMinutes] = useState(45);
-  const [breakMinutes, setBreakMinutes] = useState(15);
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const response = await fetch('https://api.unsplash.com/photos/cat?client_id=16nDuBPIZgY7w3RMazFjfe1u8eX4rwPjezxL91jtlGw');
+        const data = await response.json();
+        setImageUrl(data.urls.regular); // Actualiza la variable imageUrl con la URL de la imagen obtenida de la API de Unsplash
+      } catch (error) {
+        console.error('Error fetching image:', error);
+      }
+    };
 
-  return(
-      <div>
-      <Header/>
-      <main>
-        <SettingsContext.Provider value={{
-          showSettings,
-          setShowSettings,
-           workMinutes,
-           breakMinutes,
-           setWorkMinutes,
-           setBreakMinutes,
-        }}>
-        {showSettings ? <Settings/>: <Timer/>}
-        </SettingsContext.Provider>
-      </main>
+    fetchImage();
+  }, []);
+    
+  return (
+    <div style={{backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Todo />} />
+          <Route path="/#" element={<Todo />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
     </div>
-    
-    
   );
 }
 
 export default App;
+
+

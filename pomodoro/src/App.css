@@ -1,10 +1,11 @@
+
 :root{
   --red: #f54e4e;
   --green: #4aec8c;
 }
   
 body{
-  background-color: #ffffff;
+  background-color: gray;
 }
 main{
   padding-top: 50px;
